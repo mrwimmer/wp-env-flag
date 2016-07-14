@@ -1,0 +1,13 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+#wpadminbar #wp-admin-bar-wp_env_flag_toolbar .ab-icon:before {
+	content: '\f230';
+	top: 3px;
+}
+
+#wpadminbar #wp-admin-bar-wp_env_flag_toolbar .ab-empty-item {
+	padding-left: 6px;
+}
