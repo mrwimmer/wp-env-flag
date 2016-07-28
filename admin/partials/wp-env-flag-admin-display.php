@@ -24,13 +24,13 @@
 			$options = get_option( $this->plugin_name );
 
 			// Hostname options
-			$dev = $options['dev'];
+			$dev = str_rot13($options['dev']);
 			$dev_color = $options['dev_color'];
 
-			$staging = $options['staging'];
+			$staging = str_rot13($options['staging']);
 			$staging_color = $options['staging_color'];
 
-			$live = $options['live'];
+			$live = str_rot13($options['live']);
 			$live_color = $options['live_color'];
 
 			// Create hidden fields and save options
@@ -46,42 +46,76 @@
 	 		}
 		</script>
 		<fieldset>
-			<legend class="screen-reader-text"><span>Provide server hostname for development environment</span></legend>
+			<legend class="screen-reader-text">
+				<span>Provide server hostname for development environment</span>
+			</legend>
 			<label for="<?php echo $this->plugin_name; ?>-dev">
 				<h4><?php esc_attr_e('Development Environment', $this->plugin_name); ?></h4>
-				<input class="regular-text" type="text" id="<?php echo $this->plugin_name; ?>-dev" name="<?php echo $this->plugin_name; ?>[dev]" value="<?php if (!empty($dev)) echo $dev; ?>"/><br>
+				<input class="regular-text" type="text"
+					id="<?php echo $this->plugin_name; ?>-dev"
+					name="<?php echo $this->plugin_name; ?>[dev]"
+					value="<?php if (!empty($dev)) echo $dev; ?>"/>
+				<br>
 				<a href="#" onclick="setEnv('<?php echo $this->plugin_name . "-dev"; ?>')">Set to current host</a>
 			</label>
 			<br><br>
-			<legend class="screen-reader-text"><span><?php _e('Development environment color', $this->plugin_name);?></span></legend>
+			<legend class="screen-reader-text">
+				<span><?php _e('Development environment color', $this->plugin_name);?></span>
+			</legend>
 			<label for="<?php echo $this->plugin_name;?>-dev_color">
-				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker" id="<?php echo $this->plugin_name;?>-dev_color" name="<?php echo $this->plugin_name;?>[dev_color]"  value="<?php echo $dev_color; ?>"  />
+				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker"
+					id="<?php echo $this->plugin_name;?>-dev_color"
+					name="<?php echo $this->plugin_name;?>[dev_color]"
+					value="<?php echo $dev_color; ?>"/>
 			</label>
 		</fieldset>
+
 		<fieldset>
-			<legend class="screen-reader-text"><span>Provide server hostname for staging environment</span></legend>
+			<legend class="screen-reader-text">
+				<span>Provide server hostname for staging environment</span>
+			</legend>
 			<label for="<?php echo $this->plugin_name; ?>-staging">
 				<h4><?php esc_attr_e('Staging Environment', $this->plugin_name); ?></h4>
-				<input class="regular-text" type="text" id="<?php echo $this->plugin_name; ?>-staging" name="<?php echo $this->plugin_name; ?>[staging]" value="<?php if (!empty($staging)) echo $staging; ?>"/><br>
+				<input class="regular-text" type="text"
+					id="<?php echo $this->plugin_name; ?>-staging"
+					name="<?php echo $this->plugin_name; ?>[staging]"
+					value="<?php if (!empty($staging)) echo $staging; ?>"/>
+				<br>
 				<a href="#" onclick="setEnv('<?php echo $this->plugin_name . "-staging"; ?>')">Set to current host</a>
 			</label>
 			<br><br>
-			<legend class="screen-reader-text"><span><?php _e('Staging environment color', $this->plugin_name);?></span></legend>
+			<legend class="screen-reader-text">
+				<span><?php _e('Staging environment color', $this->plugin_name);?></span>
+			</legend>
 			<label for="<?php echo $this->plugin_name;?>-staging_color">
-				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker" id="<?php echo $this->plugin_name;?>-staging_color" name="<?php echo $this->plugin_name;?>[staging_color]"  value="<?php echo $staging_color; ?>"  />
+				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker"
+					id="<?php echo $this->plugin_name;?>-staging_color"
+					name="<?php echo $this->plugin_name;?>[staging_color]"
+					value="<?php echo $staging_color; ?>"/>
 			</label>
 		</fieldset>
 		<fieldset>
-			<legend class="screen-reader-text"><span>Provide server hostname for live environment</span></legend>
+			<legend class="screen-reader-text">
+				<span>Provide server hostname for live environment</span>
+			</legend>
 			<label for="<?php echo $this->plugin_name; ?>-live">
 				<h4><?php esc_attr_e('Live Environment', $this->plugin_name); ?></h4>
-				<input class="regular-text" type="text" id="<?php echo $this->plugin_name; ?>-live" name="<?php echo $this->plugin_name; ?>[live]" value="<?php if (!empty($live)) echo $live; ?>"/><br>
+				<input class="regular-text" type="text"
+					id="<?php echo $this->plugin_name; ?>-live"
+					name="<?php echo $this->plugin_name; ?>[live]"
+					value="<?php if (!empty($live)) echo $live; ?>"/>
+				<br>
 				<a href="#" onclick="setEnv('<?php echo $this->plugin_name . "-live"; ?>')">Set to current host</a>
 			</label>
 			<br><br>
-			<legend class="screen-reader-text"><span><?php _e('Live environment color', $this->plugin_name);?></span></legend>
+			<legend class="screen-reader-text">
+				<span><?php _e('Live environment color', $this->plugin_name);?></span>
+			</legend>
 			<label for="<?php echo $this->plugin_name;?>-live_color">
-				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker" id="<?php echo $this->plugin_name;?>-live_color" name="<?php echo $this->plugin_name;?>[live_color]"  value="<?php echo $live_color; ?>"  />
+				<input type="text" class="<?php echo $this->plugin_name;?>-color-picker"
+					id="<?php echo $this->plugin_name;?>-live_color"
+					name="<?php echo $this->plugin_name;?>[live_color]"
+					value="<?php echo $live_color; ?>"/>
 			</label>
 		</fieldset>
 		<?php submit_button( "Save Environment Settings" ); ?>

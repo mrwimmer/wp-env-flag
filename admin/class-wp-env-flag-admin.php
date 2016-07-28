@@ -163,9 +163,9 @@ class Wp_Env_Flag_Admin {
 		$valid = array();
 
 		// Sanitize
-		$valid['dev'] = sanitize_text_field( $input['dev'] );
-		$valid['staging'] = sanitize_text_field( $input['staging'] );
-		$valid['live'] = sanitize_text_field( $input['live'] );
+		$valid['dev'] = str_rot13(sanitize_text_field( $input['dev'] ));
+		$valid['staging'] = str_rot13(sanitize_text_field( $input['staging'] ));
+		$valid['live'] = str_rot13(sanitize_text_field( $input['live'] ));
 
 		$valid['dev_color'] = (isset($input['dev_color']) && !empty($input['dev_color'])) ? sanitize_text_field($input['dev_color']) : '';
 
@@ -207,7 +207,7 @@ class Wp_Env_Flag_Admin {
 	}
 
 	/**
-	 * Sanitize the contents of the text inputs.
+	 * Place the signal in the top right toolbar and apply chosen colors
 	 *
 	 * @since    1.0.0
 	 */
@@ -219,13 +219,13 @@ class Wp_Env_Flag_Admin {
 		$host = $_SERVER['HTTP_HOST'];
 
 		// Hostname options
-		$dev = $options['dev'];
+		$dev = str_rot13($options['dev']);
 		$dev_color = $options['dev_color'];
 
-		$staging = $options['staging'];
+		$staging = str_rot13($options['staging']);
 		$staging_color = $options['staging_color'];
 
-		$live = $options['live'];
+		$live = str_rot13($options['live']);
 		$live_color = $options['live_color'];
 
 		switch ($host) {
